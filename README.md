@@ -90,7 +90,7 @@ The obfuscator applies multiple transformations to make your code harder to unde
 ## 🔥 Obfuscation Modes 🔥
 
 - 🟢 **Mode 1 (Basic)**: Applies essential obfuscation techniques suitable for most cases
-- 🔴 **Mode 2 (Advanced)**: Applies more aggressive obfuscation with multiple passes of junk code injection
+- 🔴 **Mode 2 (Advanced)**: Applies more aggressive obfuscation with multiple passes of junk code injection and rename variable names
 
 ## ⚠️ Limitations ⚠️
 
