@@ -68,21 +68,17 @@ try:
         return ''.join([chr((ord(c) - (65 if c.isupper() else 97) + 10) % 26 + (65 if c.isupper() else 97)) if c.isalpha() else c for c in input_string])
 
     def build_anti_pycdc():
-        global ANTI_PYCDC
         antipycdc = ''
         e = {'Z': '1/0,', 'T': 'len+1,', 'N': 'xyz,', 'T2': '"a"+1,', 'I': '[][99],', 'K': '{}[""],', 'M': "__import__('xyz'),", 'V': 'int("a",99),', 'A': '[].__x,', 'F': 'open("ww"),'}
         for k in e:
             e[k] = e[k] * 1000
         antipycdc += '\n'.join((f'try:({v})\nexcept:0\n' for v in e.values()))
-        global ANTI_PYCDC
-        ANTI_PYCDC = f'\ntry:pass\nexcept:pass\nelse:pass\nfinally:pass\n{antipycdc}\nfinally:int(2010-611)\n'
+        globals()['ANTI_PYCDC'] = f'\ntry:pass\nexcept:pass\nelse:pass\nfinally:pass\n{antipycdc}\nfinally:int(2010-611)\n'
 
     def build_var():
         global anti_debug, pro
-        global anti_debug, pro
         concacto = open('anti.py', 'r', encoding='utf-8-sig').read()
-        "# Converted from globals()['anti_debug']"
-        anti_debug = 'open(__file__, "w", encoding="utf-8").write("Địt Con Bà Mày Dec Hook Cái Lồn!") if (len(open(__file__, "r", encoding="utf-8").read().split("\\n"))) != 51 else None\n' + concacto + '\n'
+        globals()['anti_debug'] = 'open(__file__, "w", encoding="utf-8").write("Địt Con Bà Mày Dec Hook Cái Lồn!") if (len(open(__file__, "r", encoding="utf-8").read().split("\\n"))) != 51 else None\n' + concacto + '\n'
         pro = ANTI_PYCDC
         list_ten_bienn = ['TrinhSieuDepTrai', 'CalceSieuCapVip', 'TrinhCodeThuongThua', 'CalceVoDichTheGioi', 'TrinhChuyenGiaPro', 'CalceBacThoDinhCao', 'TrinhCongNgheDinh', 'CalceLapTrinhMaster', 'TrinhSangTaoVoSong', 'CalceVuongGiaCode', 'TrinhThuatToanHay', 'CalceHackerPro', 'TrinhThanhCongLon', 'CalceToiThuongDev', 'TrinhAnDanhElite', 'CalceChienThanCode', 'TrinhProMaxVIP', 'CalceTruyenKyLapTrinh', 'TrinhMasterMind', 'CalceUltimateDev', 'TrinhDevKing', 'CalceInfinityCode', 'TrinhCodeWarrior', 'CalceChampionCoder', 'TrinhCyberHero', 'CalceTheBestDev', 'TrinhAIWizard', 'CalceOverlordCoder', 'TrinhEliteHacker', 'CalceDarkMode', 'TrinhQuantumTech', 'CalceGodLike']
         Hehe = [f'{_bool} = {varsobf('bool')}', f'{_str} = {varsobf('str')}', f'{_int} = {varsobf('int')}', f'{_float} = {varsobf('float')}', f'{_bytes} = {varsobf('bytes')}', f'{_eval} = {varsobf('eval')}', f'{__print} = {varsobf('print')}', f'{__input} = {varsobf('input')}']
@@ -359,10 +355,9 @@ try:
         DitMeMayDungCoDecKey = random.randint(0, 10000)
 
         def DitMeMayDungCoDec() -> str:
-            global __key__, __selfObject__, __AnhOiDungCoDecObject__
-            obj = __selfObject__
-            AnhOiDungCoDecObj = __AnhOiDungCoDecObject__
-            key = __key__
+            obj = globals()['__selfObject__']
+            AnhOiDungCoDecObj = globals()['__AnhOiDungCoDecObject__']
+            key = globals()['__key__']
             code = AnhOiDungCoDecObj.code['bytes']
             obj.executed = True
             return (key * 8 / 1.5, code)
@@ -372,12 +367,11 @@ try:
         DitMeMayDungCoDecClass = "\nclass DitMeMayDungCoDec():\n    def __init__(self, way: bytes, key: int, **ext) -> None:\n        self.way = way\n        self.key = key\n        self.module__ = ext.get('__module', None)\n        self.__globals = ext.get('__globals', None)\n        self.__module = ext.get('__module', None)\n        self.__AnhOiDungCoDec = ext.get('AnhOiDungCoDec', None)\n\n    def ConCac(self):\n        exec(\n            MARSHALMODULE.loads(self.module__.b16decode(self.way)),\n            globals().update({\n                '__selfObject__': self,\n                '__key__': self.key,\n                '__module': self.module__,\n                '__globals': self.__globals,\n                '__AnhOiDungCoDecObject__': self.__AnhOiDungCoDec\n            })\n        )\n        return self\n"[1:-1].replace('MARSHALMODULE', Alt('__TrinhNguyen0611__["__import__"]("marshal")'))
 
         def RemoveLayers() -> str:
-            global ___module, __selfObject__, __module
             if not globals().get('gate'):
                 return
-            obj = __selfObject__
-            module = __module
-            module__ = ___module
+            obj = globals()['__selfObject__']
+            module = globals()['__module']
+            module__ = globals()['___module']
             code = obj.code['bytes']
             code = module.b85decode(code)
             code = module__.decompress(code)
@@ -385,15 +379,13 @@ try:
             return code
 
         def Obfuscate(code: str) -> str:
-            global pro
             sys.setrecursionlimit(1000000)
             _code = code
             clean_ = '\nprint("", end="\\r")\nprint(" "*len(">> Loading... <<"), end="\\r")\n' if type_run.upper() == 'MAIN' else ''
             check_ = '\nif not (' + Compile.checkInfos + '): ' + Compile.exceptionCode
             DitMeMayDecDiCode = _code
             if protect:
-                "# Converted from globals()['pro']"
-                pro = anti_debug + pro
+                globals()['pro'] = anti_debug + globals()['pro']
                 DitMeMayDecDiCode = check_ + anti_debug + '\n' + DitMeMayDecDiCode
             DitMeMayDecDiCode = clean_ + ANTI_PYCDC + DitMeMayDecDiCode
             code__ = Compile.serializer.dumps(compile(DitMeMayDecDiCode, '<NguyenXuanTrinh>', 'exec'))
@@ -1130,7 +1122,6 @@ try:
     class ParseArgs:
 
         def __init__(self):
-            global mode, type_run, protect
             self.parser = argparse.ArgumentParser(description='Python Code Obfuscator')
             self.parser.add_argument('-f', '--file', help='Path to the Python file to obfuscate')
             self.parser.add_argument('-o', '--output', help='Output file name')
@@ -1152,12 +1143,9 @@ try:
                 self.args.mode = 1
                 Logging.info(f'No obfuscation mode specified, defaulting to mode {self.args.mode}')
             self.args.protect = self.args.protect.lower() == 'true'
-            global mode
-            mode = int(self.args.mode)
-            global protect
-            protect = self.args.protect
-            global type_run
-            type_run = self.args.type.upper()
+            globals()['mode'] = int(self.args.mode)
+            globals()['protect'] = self.args.protect
+            globals()['type_run'] = self.args.type.upper()
 
     class vdt(ast.NodeTransformer):
         """
@@ -1299,7 +1287,6 @@ try:
 
     def main():
         global banner
-        global banner
         print(' ' * len('>> Loading...'), end='\r')
         banner = Add.Add(banner, sakura, center=True)
         print(Colorate.Diagonal(Colors.DynamicMIX((sakura_, dark)), banner))
@@ -1322,7 +1309,7 @@ try:
             input(f' {Col.Symbol('!', light, dark)} {Col.light_red}Invalid file or code!{Col.reset}')
             exit()
         Logging.event('Cleaning Source Code')
-        code = clean_try_except(ymt(code))
+        code = clean_try_except(code)
         code = hard_code + code
         Logging.event('Adding Anti PYCDC')
         build_anti_pycdc()
@@ -1330,9 +1317,9 @@ try:
         build_var()
         if int(args.mode) == 2:
             open(args.output[:-3] + '-var.py', 'w', encoding='utf-8').write(Methods.obf_vars(code_))
-            operations = [Methods.obf_vars, Ast_obf().spam, Ast_obf().spam, Methods.obf_strings(args.mode, True), Compile.Obfuscate, Methods.last_obf_builtins]
+            operations = [Methods.obf_vars, Ast_obf().spam, Ast_obf().spam, Methods.obf_builtins, Methods.obf_strings(args.mode, True), Compile.Obfuscate, Methods.last_obf_builtins]
         else:
-            operations = [Ast_obf().spam, Ast_obf().spam, Methods.obf_strings(args.mode, True), Compile.Obfuscate, Methods.last_obf_builtins]
+            operations = [Ast_obf().spam, Ast_obf().spam, Methods.obf_builtins, Methods.obf_strings(args.mode, True), Compile.Obfuscate, Methods.last_obf_builtins]
         hacker = f'__TrinhNguyen0611__ = vars(globals()[{Pycloak().encode('__builtins__')}])\n' + pro
         st = time.time()
         for operation in operations:
