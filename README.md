@@ -27,7 +27,7 @@ cd Sakura
 - 🐍 Python 3.10+
 - 📦 Required packages (install with pip):
   ```bash
-  pip install colorama pytz
+  pip install colorama pytz pystyle
   ```
 
 ## 🚀 Usage 🚀
