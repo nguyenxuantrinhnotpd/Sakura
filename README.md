@@ -24,7 +24,7 @@ cd Sakura
 
 ## 📌 Requirements 📌
 
-- 🐍 Python 3.8+ (tested on Python 3.8, 3.9, and 3.10)
+- 🐍 Python 3.10+
 - 📦 Required packages (install with pip):
   ```bash
   pip install colorama pytz
